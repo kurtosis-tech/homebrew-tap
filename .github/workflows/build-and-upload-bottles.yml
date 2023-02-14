@@ -25,12 +25,11 @@ jobs:
           regex: ${{ env.SEMVER_REGEX }}
           text: ${{ github.event.head_commit.message }}
 
-      # We assume that the commit messages that are pushed to tap repo by goreleaser contain the release version
-      # Thus, if this ever changes or an accidental commit was made we need to fail loudly, in order to not attempt building the bottles
+      # We assume that commit messages pushed to tap repo by goreleaser contain the release version.
+      # If this changes or an accidental commit is made, we fail loudly to not attempt building the bottles.
       - name: Check if version was parsed from commit message and fail loudly if not
         if: ${{ steps.get-version.outputs.match == '' }}
-        # This action allows using Github API directly, so we can use the core libraries fail function to fail loudly
-        # https://timheuer.com/blog/manually-force-a-failure-in-github-action-step/
+        # This action allows using Github API directly, so we can use the core libraries fail function to fail loudly.
         uses: actions/github-script@v3
         with: 
           script: |
@@ -49,8 +48,8 @@ jobs:
 
   build_and_upload:
     needs: release
+    
     strategy:
-      fail-fast: false
       matrix:
         include: 
           - os: ubuntu-latest
@@ -77,3 +76,4 @@ jobs:
           asset_path: ${{ env.ASSET_PATH }}
           asset_name: ${{ env.ASSET_PATH }}
           asset_content_type: application/gzip
+          
