@@ -5,13 +5,13 @@
 class KurtosisCli < Formula
   desc "CLI for managing Kurtosis environments."
   homepage "https://www.kurtosistech.com"
-  version "0.88.13"
+  version "0.88.14"
   license "BSL"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.13/kurtosis-cli_0.88.13_darwin_arm64.tar.gz"
-      sha256 "d1dc556eb6a2f506c53f1e845ebf51f1c5dcff300be74824ddd9862b51500544"
+    if Hardware::CPU.intel?
+      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.14/kurtosis-cli_0.88.14_darwin_amd64.tar.gz"
+      sha256 "b3b1002dd644e18301af5df6f6a6dfa0e7b350e2345720837eea0be8fcf68108"
 
       def install
         bin.install "kurtosis"
@@ -20,9 +20,9 @@ class KurtosisCli < Formula
         fish_completion.install "scripts/completions/scripts/kurtosis.fish"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.13/kurtosis-cli_0.88.13_darwin_amd64.tar.gz"
-      sha256 "f220131e975b5c08870a066bbde08846c8466fe241f1b8b8397d29b88b9ac663"
+    if Hardware::CPU.arm?
+      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.14/kurtosis-cli_0.88.14_darwin_arm64.tar.gz"
+      sha256 "1465f2f9a82053c3b944c63a75c571254ea5ac581e109423f183a0411d3a90ea"
 
       def install
         bin.install "kurtosis"
@@ -34,9 +34,9 @@ class KurtosisCli < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.13/kurtosis-cli_0.88.13_linux_arm64.tar.gz"
-      sha256 "26fce6c24f69624da3f062e84c37a218976b7f1191082b1cdec6d1a94518c58d"
+    if Hardware::CPU.intel?
+      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.14/kurtosis-cli_0.88.14_linux_amd64.tar.gz"
+      sha256 "1f27947b719c522a8a63b5417365dcd4f2e801d3889b8d02cdc0f0f17ac8b905"
 
       def install
         bin.install "kurtosis"
@@ -45,9 +45,9 @@ class KurtosisCli < Formula
         fish_completion.install "scripts/completions/scripts/kurtosis.fish"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.13/kurtosis-cli_0.88.13_linux_amd64.tar.gz"
-      sha256 "b10b3a18d3f0678b5e5c21351df4d9693b4735cdeee3ca30ba4dd0b9137b1934"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/kurtosis-tech/kurtosis-cli-release-artifacts/releases/download/0.88.14/kurtosis-cli_0.88.14_linux_arm64.tar.gz"
+      sha256 "8a6533bff2ba05bf2a4bb1dcdb901dc810715c4757bd0bb6a1cdde92aa7c5572"
 
       def install
         bin.install "kurtosis"
